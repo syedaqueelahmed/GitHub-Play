@@ -40,7 +40,7 @@ public class Application extends Controller {
 		html="<ul style=\"position:absolute; left:40%;\">";
 		for(i=0; i<ar.length();i++){
 			o=ar.getJSONObject(i);
-			html=html.concat("<li>"+o.getString("name")+"</li>");
+			html=html.concat("<li><a href="+o.getString("html_url")+">"+o.getString("name")+"</a></li>");
 		}
 		html=html.concat("</ul>");
 		System.out.println(html);

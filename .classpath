@@ -89,15 +89,5 @@
 	<classpathentry kind="lib" path="/home/captainprice/Desktop/play-2.0.2/repository/local/org.easytesting/fest-util/1.1.6/jars/fest-util.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/captainprice/Desktop/play-2.0.2/framework/sbt/boot/scala-2.9.1/lib/scala-library.jar"/>
-	<classpathentry kind="lib" path="/media/B080FFA080FF6B6C/Utilities/Developer Tools/Json java Library &amp; dependencies/commons-beanutils-1.8.3.jar"/>
-	<classpathentry kind="lib" path="/media/B080FFA080FF6B6C/Utilities/Developer Tools/Json java Library &amp; dependencies/commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="/media/B080FFA080FF6B6C/Utilities/Developer Tools/Json java Library &amp; dependencies/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="/media/B080FFA080FF6B6C/Utilities/Developer Tools/Json java Library &amp; dependencies/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/media/B080FFA080FF6B6C/Utilities/Developer Tools/Json java Library &amp; dependencies/ezmorph-1.0.6.jar"/>
-	<classpathentry kind="lib" path="/media/B080FFA080FF6B6C/Utilities/Developer Tools/Json java Library &amp; dependencies/json-lib-2.4-jdk15.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/media/B080FFA080FF6B6C/Utilities/Developer Tools/Json java Library &amp; dependencies/json-lib-2.4-jdk15-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
