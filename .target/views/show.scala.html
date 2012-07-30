@@ -7,12 +7,13 @@
 			<meta http-equiv="REFRESH" content="5;url=/">
 		}
 	</head>
-	<body style="position: relative; top: 5%; text-align:center; background-color: lightyellow;">
+	
+	<body style="position: relative; top: 5%; background:lightyellow; text-align:center;"> @* background-image:url('@routes.Assets.at("images/penguin.png")');"> *@
 		@if(uname == ""){
 			<h2>Invalid User Name</h2>
 		}else{
 			<h1><a href="http://github.com/@(uname)" target="_blank">@(uname)</a>'s Repos:</h1>
 		}
-		<p>@content</p>
+		<p>@content</p>		
 	</body>
 </html>

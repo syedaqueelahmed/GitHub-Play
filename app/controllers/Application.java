@@ -24,7 +24,6 @@ public class Application extends Controller {
   public static Result show(String uname){
 	  String html="";
 	  int i=0;
-	  
 	  try {
 		URL url=new URL("https://api.github.com/users/"+uname+"/repos");
 		HttpURLConnection con=(HttpURLConnection) url.openConnection();
@@ -39,14 +38,30 @@ public class Application extends Controller {
 		}
 		JSONArray ar=new JSONArray(s.toString());
 		JSONObject o;
-
-		html="<ul style=\"position:center; list-style-type: none;\">";
+		
+		html="<div align=\"center\"><table cellspacing=\"20\" style=\"text-align: center;\">" +
+				"<tr>" +
+					"<th>Repo</th>" +
+					"<th>Watchers</th>" +
+					"<th>Forks</th>" +
+					"<th>Open Issues</th>" +
+					"<th>Language</th>" +
+					"<th>Home Page</th>" +
+				"</tr>";
+//		html="<ul style=\"position:center; list-style-type: none;\">";
 		for(i=0; i<ar.length();i++){
 			o=ar.getJSONObject(i);
-			html=html.concat("<li><a target=\"_blank\" href="+o.getString("html_url")+">"+o.getString("name")+"</a></li>");
+			html=html.concat("<tr>");
+				html=html.concat("<td><a target=\"_blank\" href="+o.getString("html_url")+">"+o.getString("name")+"</a></td>");
+				html=html.concat("<td>"+o.getString("watchers_count")+"</td>");
+				html=html.concat("<td>"+o.getString("forks_count")+"</td>");
+				html=html.concat("<td>"+o.getString("open_issues_count")+"</td>");
+				html=html.concat("<td>"+o.getString("language")+"</td>");
+				html=html.concat("<td>"+o.getString("homepage")+"</td>");
+			html=html.concat("</tr>");
 		}
-		html=html.concat("</ul>");
-		System.out.println(html);
+//		html=html.concat("</ul>");
+		html=html.concat("</table></div>");
 		
 	  } catch (MalformedURLException e) {
 			e.printStackTrace();
