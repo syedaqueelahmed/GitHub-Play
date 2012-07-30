@@ -3,9 +3,16 @@
 <html>
 	<head>
 		<title>List of Repositories</title>
+		@if(uname == ""){
+			<meta http-equiv="REFRESH" content="5;url=/">
+		}
 	</head>
-	<body style="position: relative; top: 15%; text-align:center; background-color: lightyellow;" bottommargin="100">
-		<h1><a href="http://github.com/@(uname)">@(uname)'s</a> Repos:</h1>
+	<body style="position: relative; top: 5%; text-align:center; background-color: lightyellow;">
+		@if(uname == ""){
+			<h2>Invalid User Name</h2>
+		}else{
+			<h1><a href="http://github.com/@(uname)" target="_blank">@(uname)</a>'s Repos:</h1>
+		}
 		<p>@content</p>
 	</body>
 </html>

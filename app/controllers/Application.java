@@ -34,13 +34,16 @@ public class Application extends Controller {
 		while((i=is.read())!=-1){
 			s.append((char)i);
 		}
+		if(s.toString().equals("[]")){
+			return ok(views.html.show.render(new Html("<br /><br />User has no repos.<br /><br /><br /><a href=\"/\">Back</a>"), uname));
+		}
 		JSONArray ar=new JSONArray(s.toString());
 		JSONObject o;
 
-		html="<ul style=\"position:absolute; left:40%;\">";
+		html="<ul style=\"position:center; list-style-type: none;\">";
 		for(i=0; i<ar.length();i++){
 			o=ar.getJSONObject(i);
-			html=html.concat("<li><a href="+o.getString("html_url")+">"+o.getString("name")+"</a></li>");
+			html=html.concat("<li><a target=\"_blank\" href="+o.getString("html_url")+">"+o.getString("name")+"</a></li>");
 		}
 		html=html.concat("</ul>");
 		System.out.println(html);
@@ -48,7 +51,9 @@ public class Application extends Controller {
 	  } catch (MalformedURLException e) {
 			e.printStackTrace();
 	  } catch (IOException e) {
-		e.printStackTrace();
+		  	uname="";
+		  	html="Redirecting back in 5 sec...";
+		  	e.printStackTrace();
 	  } catch (JSONException e) {
 		e.printStackTrace();
 	  }
