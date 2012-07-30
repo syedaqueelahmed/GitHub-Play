@@ -1,12 +1,20 @@
 <html>
 	<head>
 		<title>Welcome</title>
+		<script type="text/javascript">
+			function validate(){
+				if(document.forms.userform.uname.value == ""){
+					alert("Enter a Username");
+					return false;
+				}
+			}
+		</script>
 	</head>
 	<body style="position: relative; top: 15%; text-align:center; background-color: lightyellow;">
 		<h1>Welcome to GitHub-Play!</h1>
 		<br>
 		<p>Please enter a GitHub User Name to get a list of Repos maintained by the user:</p>
-		<form action="/show">
+		<form action="/show" name="userform" onsubmit="return validate()">
 			<input type="text" name="uname" />
 			<input type="submit" value="show"/>
 		</form>		
