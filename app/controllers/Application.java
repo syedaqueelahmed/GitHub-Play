@@ -57,7 +57,14 @@ public class Application extends Controller {
 				html=html.concat("<td>"+o.getString("forks_count")+"</td>");
 				html=html.concat("<td>"+o.getString("open_issues_count")+"</td>");
 				html=html.concat("<td>"+o.getString("language")+"</td>");
-				html=html.concat("<td>"+o.getString("homepage")+"</td>");
+				if(o.getString("homepage")!="null" && !o.getString("homepage").isEmpty()){
+					html=html.concat("<td><a target=\"_blank\" href=");
+						if(!o.getString("homepage").startsWith("http"))
+							html=html.concat("http://");
+					html=html.concat(o.getString("homepage")+">"+o.getString("homepage")+"</a></td>");
+				}else{
+					html=html.concat("<td>-</td>");
+				}
 			html=html.concat("</tr>");
 		}
 //		html=html.concat("</ul>");
