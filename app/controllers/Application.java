@@ -25,7 +25,7 @@ public class Application extends Controller {
 	  String html="";
 	  int i=0;
 	  try {
-		URL url=new URL("https://api.github.com/users/"+uname+"/repos?per_page=100");
+		URL url=new URL("https://api.github.com/users/"+uname+"/repos?per_page=500");
 		HttpURLConnection con=(HttpURLConnection) url.openConnection();
 		InputStream is=con.getInputStream();
 		StringBuilder s=new StringBuilder("");
