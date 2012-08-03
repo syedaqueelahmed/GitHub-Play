@@ -1,19 +1,73 @@
 @(content:Html)(uname:String)
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title>List of Repositories</title>
-		@if(uname == ""){
-			<meta http-equiv="REFRESH" content="5;url=/">
-		}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="@routes.Assets.at("images/favicon.png")">
+		<title>List of Repositories | GitHub - Play</title>
+
+		<!-- CSS  -->
+	    <link href="@routes.Assets.at("stylesheets/bootstrap.css")" rel="stylesheet">
+	    <!-- <link href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")" rel="stylesheet"> -->
+	    <style type="text/css">
+	    	body {
+				text-align: center;
+				padding-top: 100px;
+				padding-bottom: 40px;
+			}
+		</style>
+		
+		<!-- Javascript -->
+		<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
 	</head>
 	
-	<body style="position: relative; top: 5%; background:lightyellow; text-align:center;"> @* background-image:url('@routes.Assets.at("images/penguin.png")');"> *@
+	<body> <!-- style="position: relative; top: 5%; background:lightyellow; text-align:center;"> --> @* background-image:url('@routes.Assets.at("images/penguin.png")');"> *@
+		 
+		 <div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+		  		<div class="container">
+		    		<div class="row">
+		    			<br>
+				    	<div class="span3 offset2">
+				    		@if(uname == ""){
+				    			<div class="brand">!</div>
+				    		}else{
+				    			<div class="brand"><a href="http://github.com/@uname" target="_blank">@uname</a>'s Repos</div>
+				    		}
+				    	</div>
+				    	<div class="span1">
+							<ul class="nav">
+				        		<li class="active"><a href="/">Home</a></li>
+				      		</ul>
+			      		</div>
+				    	<div class="span5 offset1">
+				    		<form action="/show" name="userform" onsubmit="return validatename()">
+								<input type="text" name="uname" placeholder="Username" />
+								<input type="submit" value="SHOW &raquo;" class="btn btn-primary"/>
+								<script type="text/javascript">
+									function validatename(){
+										if(document.forms.userform.uname.value == ""){
+											alert("Enter a Username");
+											return false;
+										}
+									}
+								</script>
+							</form>
+						</div>
+			    	</div>
+		    	</div>
+	  		</div>
+		</div>
+		
 		@if(uname == ""){
-			<h2>Invalid User Name</h2>
-		}else{
-			<h1><a href="http://github.com/@(uname)" target="_blank">@(uname)</a>'s Repos:</h1>
+			<br /><br /><br /><br /><br /><h4>Invalid Username</h4><br /><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		}
-		<p>@content</p>		
+		<p>@content</p>	
+		
+		<br>		
+	  	<footer>
+		    <p>An <a href="http://about.me/iontech" target="_blank">iontech</a> production</p>
+	  	</footer>	
 	</body>
 </html>

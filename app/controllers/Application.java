@@ -25,7 +25,7 @@ public class Application extends Controller {
 	  String html="";
 	  int i=0;
 	  try {
-		URL url=new URL("https://api.github.com/users/"+uname+"/repos");
+		URL url=new URL("https://api.github.com/users/"+uname+"/repos?per_page=100");
 		HttpURLConnection con=(HttpURLConnection) url.openConnection();
 		InputStream is=con.getInputStream();
 		StringBuilder s=new StringBuilder("");
@@ -34,47 +34,39 @@ public class Application extends Controller {
 			s.append((char)i);
 		}
 		if(s.toString().equals("[]")){
-			return ok(views.html.show.render(new Html("<br /><br />User has no repos.<br /><br /><br /><a href=\"/\">Back</a>"), uname));
+			return ok(views.html.show.render(new Html("<br /><br /><br /><br /><br /><h4>User has no repos.</h4><br /><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>"), uname));
 		}
 		JSONArray ar=new JSONArray(s.toString());
 		JSONObject o;
 		
-		html="<div align=\"center\"><table cellspacing=\"20\" style=\"text-align: center;\">" +
-				"<tr>" +
-					"<th>Repo</th>" +
-					"<th>Watchers</th>" +
-					"<th>Forks</th>" +
-					"<th>Open Issues</th>" +
-					"<th>Language</th>" +
-					"<th>Home Page</th>" +
-				"</tr>";
-//		html="<ul style=\"position:center; list-style-type: none;\">";
+		html="";
 		for(i=0; i<ar.length();i++){
 			o=ar.getJSONObject(i);
-			html=html.concat("<tr>");
-				html=html.concat("<td><a target=\"_blank\" href="+o.getString("html_url")+">"+o.getString("name")+"</a></td>");
-				html=html.concat("<td>"+o.getString("watchers_count")+"</td>");
-				html=html.concat("<td>"+o.getString("forks_count")+"</td>");
-				html=html.concat("<td>"+o.getString("open_issues_count")+"</td>");
-				html=html.concat("<td>"+o.getString("language")+"</td>");
-				if(o.getString("homepage")!="null" && !o.getString("homepage").isEmpty()){
-					html=html.concat("<td><a target=\"_blank\" href=");
-						if(!o.getString("homepage").startsWith("http"))
-							html=html.concat("http://");
-					html=html.concat(o.getString("homepage")+">"+o.getString("homepage")+"</a></td>");
-				}else{
-					html=html.concat("<td>-</td>");
-				}
-			html=html.concat("</tr>");
+			html=html.concat("<div class=\"container\">");
+				html=html.concat("<div class=\"row-fluid\">");
+					html=html.concat("<h3><a href=\""+o.getString("html_url")+"\" target=\"_blank\">"+o.getString("name")+"</a></h3><br>");
+				html=html.concat("</div>");
+				html=html.concat("<div class=\"row-fluid\">");
+					html=html.concat("<div class=\"span3 thumbnail\">");
+						html=html.concat("<h4>Watchers</h4><br>" +
+								"<p>"+o.getString("watchers_count")+"</p></div>");
+					html=html.concat("<div class=\"span3 thumbnail\">");
+						html=html.concat("<h4>Forks</h4><br>" +
+								"<p>"+o.getString("forks_count")+"</p></div>");
+					html=html.concat("<div class=\"span3 thumbnail\">");
+						html=html.concat("<h4>Open Issues</h4><br>" +
+								"<p>"+o.getString("open_issues_count")+"</p></div>");
+					html=html.concat("<div class=\"span3 thumbnail\">");
+						html=html.concat("<h4>Language</h4><br>" +
+								"<p>"+o.getString("language")+"</p></div>");
+			html=html.concat("</div></div><br><hr><br>");
 		}
-//		html=html.concat("</ul>");
-		html=html.concat("</table></div>");
-		
+
 	  } catch (MalformedURLException e) {
 			e.printStackTrace();
 	  } catch (IOException e) {
 		  	uname="";
-		  	html="Redirecting back in 5 sec...";
+		  	html="";
 		  	e.printStackTrace();
 	  } catch (JSONException e) {
 		e.printStackTrace();

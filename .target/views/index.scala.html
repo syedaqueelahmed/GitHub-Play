@@ -1,22 +1,46 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title>Welcome</title>
-		<script type="text/javascript">
-			function validate(){
-				if(document.forms.userform.uname.value == ""){
-					alert("Enter a Username");
-					return false;
-				}
-			}
-		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Welcome | GitHub - Play</title>
+		<link rel="shortcut icon" href="@routes.Assets.at("images/favicon.png")">
+		
+		<!-- CSS  -->
+	    <link href="@routes.Assets.at("stylesheets/index.css")" rel="stylesheet">
+	    <!-- <link href="@routes.Assets.at("stylesheets/bootstrap-responsive.css")" rel="stylesheet"> -->
+		
+		<!-- Javascript -->
+		<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
+	    
 	</head>
-	<body style="position: relative; top: 15%; text-align:center; background-color:lightyellow;">  @* background-image:url('@routes.Assets.at("images/penguin.png")');"> *@
-		<h1>Welcome to GitHub-Play!</h1>
-		<br>
-		<p>Please enter a GitHub User Name to get a list of Repos maintained by the user:</p>
-		<form action="/show" name="userform" onsubmit="return validate()">
-			<input type="text" name="uname" />
-			<input type="submit" value="show"/>
-		</form>		
+	
+	<body> <!-- style="position: relative; top: 15%; text-align:center; background-color:lightyellow;"> -->  @* background-image:url('@routes.Assets.at("images/penguin.png")');"> *@
+		
+		<div class="container">
+			<div class="hero-unit">
+		  		<h1>Welcome to GitHub-Play!</h1>
+		  		<br><br>
+			  	<p>Please enter a GitHub Username to get a list of Repos maintained by the user:
+				  	<form action="/show" name="userform" onsubmit="return validatename()">
+						<input type="text" name="uname" placeholder="Username" />
+						<br>
+						<input type="submit" value="SHOW &raquo;" class="btn btn-primary"/>
+						<script type="text/javascript">
+							function validatename(){
+								if(document.forms.userform.uname.value == ""){
+									alert("Enter a Username");
+									return false;
+								}
+							}
+						</script>
+					</form>
+				</p>
+			</div>
+			<br><br><br><br>		
+		  	<footer>
+			    <p>An <a href="http://about.me/iontech" target="_blank">iontech</a> production</p>
+		  	</footer>
+		</div> <!-- /container -->
+
 	</body>
 </html>
