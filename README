@@ -1,4 +1,6 @@
 GitHub API - Play
 =================
 
+A UI for the GitHub API.
+
 A simple Play app that retrieves the list of repos of a particular GitHub user.
